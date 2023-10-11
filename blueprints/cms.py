@@ -53,4 +53,12 @@ def add_content():
 
 @cms_bp.route("/cms/contact_manager", methods=["GET"])
 def contact_manager():
-    pass
+    active_entry = None
+    for entry in about_entries:
+        if entry["isActive"]:
+            active_entry = entry
+            break
+    return render_template("contact_manager.html")
+
+
+
